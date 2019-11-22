@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TableLayout android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<TableLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/TableLayout03">
 
@@ -16,7 +17,7 @@
             android:id="@+id/Spinner01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"></Spinner>
+            android:layout_weight="1" />
     </TableRow>
 
     <TableRow
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv1"
             android:paddingLeft="10sp"
-            android:layout_weight="1"></TextView>
+            android:layout_weight="1" />
     </TableRow>
 
     <TableRow
@@ -43,12 +44,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Memory Game"
+            android:text="@string/memory_game"
             android:visibility="visible"
             android:textSize="30sp"
             android:paddingTop="20sp"
-            android:textColor="#EEFFAA"
-            android:id="@+id/mainTitle"></TextView>
+            android:textColor="#000000"
+            android:id="@+id/mainTitle" />
     </TableRow>
 
     <TableRow
@@ -56,17 +57,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:typeface="normal"
-            android:bufferType="normal"
-            android:textColor="#FFEEAA"
-            android:id="@+id/myWebSite"
-            android:text="http://www.aviyehuda.com"></TextView>
     </TableRow>
 
     <TableRow
@@ -80,14 +70,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center">
+            android:gravity="center"
+            tools:ignore="UselessParent">
 
             <ImageView
                 android:id="@+id/ImageView01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/smudge_cat"
-                android:layout_gravity="center"></ImageView>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fly_cat"
+                android:layout_gravity="center" />
         </LinearLayout>
     </TableRow>
 

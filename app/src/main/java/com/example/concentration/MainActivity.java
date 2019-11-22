@@ -12,7 +12,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -53,10 +52,7 @@ public class MainActivity extends Activity {
         loadImages();
         setContentView(R.layout.activity_main);
 
-        TextView url = ((TextView)findViewById(R.id.myWebSite));
-        Linkify.addLinks(url, Linkify.WEB_URLS);
-
-        backImage =  getResources().getDrawable(R.drawable.yugiCardBack);
+        backImage =  getResources().getDrawable(R.drawable.yugi_card_back);
 
        /*
        ((Button)findViewById(R.id.ButtonNew)).setOnClickListener(new OnClickListener() {
