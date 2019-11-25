@@ -2,6 +2,7 @@ package com.example.concentration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -9,6 +10,7 @@ import java.util.TimerTask;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,14 +18,18 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
+
+import androidx.annotation.RequiresApi;
 
 public class MainActivity extends Activity {
     private static int ROW_COUNT = -1;
@@ -36,7 +42,7 @@ public class MainActivity extends Activity {
     private Card secondCard;
     private ButtonListener buttonListener;
 
-    private static Object lock = new Object();
+    private static final Object lock = new Object();
 
     int turns;
     private TableLayout mainTable;
@@ -53,18 +59,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         backImage =  getResources().getDrawable(R.drawable.yugi_card_back);
-
-       /*
-       ((Button)findViewById(R.id.ButtonNew)).setOnClickListener(new OnClickListener() {
-
-		@Override
-		public void onClick(View v) {
-			newGame();
-
-		}
-
-
-	});*/
 
         buttonListener = new ButtonListener();
 
@@ -166,8 +160,7 @@ public class MainActivity extends Activity {
     }
 
     private void loadImages() {
-        images = new ArrayList<Drawable>();
-
+        images = new ArrayList<>();
         images.add(getResources().getDrawable(R.drawable.bongo_cat));
         images.add(getResources().getDrawable(R.drawable.boot_cat));
         images.add(getResources().getDrawable(R.drawable.coughing_cat));
@@ -190,7 +183,7 @@ public class MainActivity extends Activity {
             ArrayList<Integer> list = new ArrayList<Integer>();
 
             for(int i=0;i<size;i++){
-                list.add(new Integer(i));
+                list.add(i);
             }
 
 
@@ -203,7 +196,7 @@ public class MainActivity extends Activity {
                     t = r.nextInt(i);
                 }
 
-                t=list.remove(t).intValue();
+                t= list.remove(t);
                 cards[i%COL_COUNT][i/COL_COUNT]=t%(size/2);
 
                 Log.i("loadCards()", "card["+(i%COL_COUNT)+
@@ -221,7 +214,9 @@ public class MainActivity extends Activity {
         row.setHorizontalGravity(Gravity.CENTER);
 
         for (int x = 0; x < COL_COUNT; x++) {
-            row.addView(createImageButton(x,y));
+            View view = createImageButton(x, y);
+            row.addView(view);
+            view.setLayoutParams(new TableRow.LayoutParams(200, 290));
         }
         return row;
     }
@@ -271,6 +266,7 @@ public class MainActivity extends Activity {
 
                 TimerTask tt = new TimerTask() {
 
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void run() {
                         try{
@@ -279,7 +275,7 @@ public class MainActivity extends Activity {
                             }
                         }
                         catch (Exception e) {
-                            Log.e("E1", e.getMessage());
+                            Log.e("E1", Objects.requireNonNull(e.getMessage()));
                         }
                     }
                 };
