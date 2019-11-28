@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/TableLayout03"
-    android:shrinkColumns="*"
-    android:layout_gravity="center">
+    android:shrinkColumns="*">
 
 
 
@@ -66,7 +65,7 @@
         android:id="@+id/TableRow03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:gravity="center">
 
         <LinearLayout
             android:id="@+id/LinearLayout01"
@@ -76,13 +75,12 @@
             android:gravity="center"
             tools:ignore="UselessParent">
 
-
             <ImageView
                 android:id="@+id/ImageView01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/yugi_card_back" />
+                android:background="@drawable/yugi_card_back"
+                android:layout_gravity="center" />
         </LinearLayout>
     </TableRow>
 
